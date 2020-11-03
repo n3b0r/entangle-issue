@@ -1,0 +1,18 @@
+.filepond--drop-label {
+	label {
+		font-size: 0.875rem !important;
+	}
+
+	background-color: #ffffff
+}
+
+.filepond--panel-root {
+	background-color: #ffffff;
+}
+
+.filepond--root {
+	margin-bottom: 0px;
+	.filepond--list-scroller{
+		top: 10px !important;
+	}
+}

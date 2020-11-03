@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap');
+@import "icons";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+// Trix
+@import '../../node_modules/trix/dist/trix.css';
+@import "trix";
+
+// Filepond
+@import "../../node_modules/filepond/dist/filepond.css";
+@import "filepond";
+
+//Flatpickr
+@import "../../node_modules/flatpickr/dist/themes/dark.css";
+
+.post-content {
+	ul, ol {
+		padding-left: 2.5rem;
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	h1 {
+		font-weight: 600;
+		font-size: 1.6em;
+	}
+
+	strong {
+		font-weight: 600;
+	}
+
+	a {
+		color: blue;
+		text-decoration: underline;
+	}
+
+	blockquote {
+		border: 0 solid #cccccc;
+		border-left-width: 0.3em;
+		margin-left: 1em;
+		padding-left: 0.6em;
+	}
+
+	pre {
+		background-color: #eeeeee;
+		padding: 5px
+	}
+}
