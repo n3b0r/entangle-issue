@@ -27,18 +27,11 @@ class Users extends Component
     //Modals
     public $showEditModal = false;
     
-    //Edit/Create form
-    //public $generatePassword = false;
-    //public $password = '';
-    //public $password_confirmation = '';
+    //Edit form
+    public $active = false;
     
     //Table values & filters
-    public $search = '';
     private $paginate = 10;
-    
-    protected $queryString = [
-        'search' => ['except' => '']
-    ];
     
     public function rules()
     {
@@ -46,7 +39,7 @@ class Users extends Component
             'user.name' => 'required|string|max:255',
             'user.email' => 'required|email|max:255',
             'user.active' => 'required|boolean',
-            //'password' => 'min:12|confirmed',
+            'active' => 'required|boolean',
         ];
     }
     
@@ -59,19 +52,7 @@ class Users extends Component
     {
         $this->user = User::make(['active' => false]);
     }
-    
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-    
-    
-    public function updatedShowEditModal()
-    {
-        //$this->reset(['generatePassword', 'password', 'password_confirmation']);
-    //    $this->reset(['generatePassword', 'password', 'password_confirmation']);
-    }
-    
+   
     public function edit(User $user)
     {
         if ( $this->user->isNot($user) ) $this->user = $user;
@@ -80,30 +61,14 @@ class Users extends Component
     
     public function save()
     {
-        //$attributes = $this->validate([
-        //    'user.name' => 'required|string|max:255',
-        //    'user.email' => 'required|email|max:255|unique:users,email,' . $this->user->id,
-        //    'user.active' => 'required|boolean',
-        //    //'password' => 'min:12|confirmed',
-        //    //'generatePassword' => 'boolean',
-        //]);
-        
-        //if ( $attributes['generatePassword'] )
-        //    $password = Str::random(12);
-        //elseif ( ! empty($attributes['password']) )
-        //    $password = $attributes['password'];
-        //
-        //empty($password) ?: $attributes['user']['password'] = Hash::make($password);
-        
-        //This is big shit, but seems to be a bug in @entangle
-        //$attributes['user']['active'] = $attributes['active'];
-        
-        $this->validate();
+        $attributes = $this->validate();
+    
+        //That is big shit but seems to be a bug on @entangle
+        $attributes['user']['active'] = $attributes['active'];
         
         $this->user->save();
         
-        $this->reset(['generatePassword', 'password', 'password_confirmation','showEditModal']);
-        
+        $this->reset(['active','showEditModal']);
     }
     
     public function render()

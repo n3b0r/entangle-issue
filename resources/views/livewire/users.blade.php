@@ -57,7 +57,11 @@
 				
 				<x-input.group for="user.active" label="User active?" :error="$errors->first('user.active')" toggle>
 					<x-input.toggle wire:model="user.active" color="red" />
-					Active status ====> {{ $this->user->active }}
+					Active status in Laravel model ====> {{ $this->user->active }}
+				</x-input.group>
+				<x-input.group for="active" label="User active?" :error="$errors->first('active')" toggle>
+					<x-input.toggle wire:model="active" color="red" />
+					Active status Livewire property ====> {{ $active }}
 				</x-input.group>
 			</x-slot>
 			
