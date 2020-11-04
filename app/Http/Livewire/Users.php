@@ -48,6 +48,10 @@ class Users extends Component
         $this->validateOnly($propertyName);
     }
     
+    public function updatedShowEditModal(){
+        $this->reset(['active']);
+    }
+    
     public function mount()
     {
         $this->user = User::make(['active' => false]);
